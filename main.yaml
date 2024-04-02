@@ -1,0 +1,4 @@
+    - name: build
+        shell: bash
+        run: |
+          ./gradlew build
