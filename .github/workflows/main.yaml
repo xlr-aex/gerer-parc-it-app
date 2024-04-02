@@ -17,5 +17,4 @@ jobs:
           distribution: 'adopt'
       - name: Build
         run: ./gradlew.bat build
-      - name: Test
-        run: ./gradlew.bat test
+
