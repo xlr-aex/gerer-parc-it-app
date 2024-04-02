@@ -1,4 +1,3 @@
-@"
 name: workflow principal de cicd
 
 on:
@@ -7,22 +6,16 @@ on:
       - main
 
 jobs:
-  build_and_test:
-    name: Build and Test
+  build-and-test: # Assurez-vous que ce nom est le même partout
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up JDK 17
-      uses: actions/setup-java@v3
-      with:
-        java-version: '17'
-        distribution: 'adopt'
-    - name: build
-      shell: bash
-      run: |
-        ./gradlew build
-    - name: test
-      shell: bash
-      run: |
-        ./gradlew test
-"@ | Out-File -FilePath '.\.github\workflows\main.yaml'
+      - uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'adopt'
+      - name: Build
+        run: ./gradlew build
+      - name: Test
+        run: ./gradlew test
