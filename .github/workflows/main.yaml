@@ -1,0 +1,28 @@
+@"
+name: workflow principal de cicd
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_test:
+    name: Build and Test
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'adopt'
+    - name: build
+      shell: bash
+      run: |
+        ./gradlew build
+    - name: test
+      shell: bash
+      run: |
+        ./gradlew test
+"@ | Out-File -FilePath '.\.github\workflows\main.yaml'
